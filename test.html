@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALU Student Finance Tracker</title>
+    <link rel="icon" type="image/png" href="assets/images/financetracker.png" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="scripts/main.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <!-- ADD THIS BUTTON -->
+        <button class="hamburger" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- ADD id="headMenubar" to your nav -->
+        <nav class="headMenubar" id="headMenubar">
+            <button id="headDashboard">Dashboard</button>
+            <button id="headAddTransaction">Add Transaction</button>
+            <button id="headRecords">Records</button>
+            <button id="headSettings">Settings</button>
+            <button id="headAbout">About</button>
+        </nav>
+    </header>
+
+    <!-- ADD THIS OVERLAY DIV after header -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <main>
+        <section id="about">
+            <div class="aboutcontent">
+                <h1 class="aboutheader">Money-Smart Student!</h1>
+                <div class="aboutcontent">
+                    <p>Welcome to <b>Student Finance Tracker</b><br> The place where your goals and your wallet
+                        finally team up!👌<br><br>
+                        No more "where did my money go?" moments — just smart tracking, big wins, and total
+                        control.<br>
+                        Whether you're saving for snacks, sneakers, or success, every coin you track gets you closer
+                        to your dreams.<br><br>
+                        So go ahead — <b>own your money, rule your world, and watch your future glow!</b></p>
+
+                    <img id="introimage" src="assets/images/freeguy.jpeg" alt="Person tracking finances on laptop">
+                </div>
+
+                <div class="aboutcontent">
+                    <h1 class="aboutheader">Where we envision our students</h1>
+                    <div class="abouttext">
+                        <div class="about-section">
+                            <h6 class="aboutsubhead">Our Mission: Making Money Moves That Matter</h6>
+                            <p>Helping you boss your money so you can boss your studies.<br>
+                                <b>Track it. Save it. Spend it smart.</b><br>
+                                No stress, just success.
+                            </p>
+                        </div>
+
+                        <div class="about-section">
+                            <h6 class="aboutsubhead">The Vision: Graduate With Grades and Gains</h6>
+                            <p>We see a future where every student <b>graduates with a strong GPA, a smart wallet,
+                                    and a
+                                    clear path to their dreams.</b><br>
+                                By managing money well, students can focus on what truly matters — learning,
+                                growing,
+                                and
+                                building a brighter tomorrow without financial stress.
+                            </p>
+                        </div>
+
+                        <div class="about-section">
+                            <h6 class="aboutsubhead">Our Core Foundations: What We Stand For</h6>
+                            <ol type="A">
+                                <li><b>Financial Glow-Up:</b> Control your coins, control your life.</li>
+                                <li><b>Growth Mode:</b> Learn it. Earn it. Level up.</li>
+                                <li><b>Squad Vibes:</b> We grow together, not alone.</li>
+                                <li><b>Freedom:</b> Because stress-free minds make genius moves.</li>
+                                <li><b>Balance:</b> Study hard. Live loud. Stay chill.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="aboutcontent">
+                    <h1 class="aboutheader">The Brain Behind Magic</h1>
+                    <div id="aboutbodyfooter">
+                        <div id="aboutclassfooter">
+                            <p>Every great idea starts with one spark — and that spark turned into this app.<br>
+                                Built with love, caffeine, and a mission to help students boss their money and their
+                                studies.
+                            </p>
+
+                            <p>Smart Money, Simple Tracking</p><br><br>
+                            <p>Names: Uwineza Bonesha Kevine</p>
+                            <p>Student at Africa Leadership University, Rwanda</p>
+
+                        </div>
+
+                        <figure>
+                            <img id="founderimage" src="assets/images/founder1.jpeg" alt="Image of the founder">
+                            <figcaption>Bonesha The Founder</figcaption>
+                        </figure>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard">
+            <h3>Dashboard</h3>
+
+            <p><strong>Total Income:</strong> <span id="totalIncome" class="positive-amount">0.00 RWF</span></p>
+            <p><strong>Planned Savings:</strong> <span id="plannedSavings" class="negative-amount">0.00 RWF</span></p>
+            <p><strong>Total Expenses:</strong> <span id="totalExpenses" class="negative-amount">0.00 RWF</span></p>
+            <p><strong>Amount Remaining:</strong> <span id="amountRemaining">0.00 RWF</span></p>
+            <p><strong>Budget Status (vs Max Spending):</strong> <span id="diffMaxSpend">0.00 RWF</span></p>
+            <p><strong>Top Category:</strong> <span id="topCategory">-</span></p>
+
+            <canvas id="expenseChart" width="600" height="250"></canvas>
+        </section>
+
+
+        <section id="transaction">
+            <div class="aboutcontent">
+                <form id="transactions">
+                    <label for="uniqueid">ID: </label>
+                    <input type="text" id="uniqueid" name="uniqueid" readonly required><br><br>
+
+                    <label for="type">Type:</label>
+                    <select id="type" name="type" required>
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select><br><br>
+
+                    <label for="description">Description: </label>
+                    <input type="text" id="description" name="description" required
+                        placeholder="eg: Tuition fees"><br><br>
+
+                    <label for="amount">Amount: </label>
+                    <input type="number" id="amount" name="amount" step="0.01" min="0" required
+                        placeholder="eg: 150000"><br><br>
+
+                    <div id="categoryRow">
+                        <label for="category">Category: </label>
+                        <select id="category" name="category" required>
+                            <option value="food">Food</option>
+                            <option value="books">Books</option>
+                            <option value="transport">Transport</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="fees">Fees</option>
+                            <option value="other">Other (add)</option>
+                        </select><br><br>
+
+                        <label for="addCategory" id="addLabel" style="display:none;">Add Category: </label>
+                        <input type="text" id="addCategory" name="addCategory" style="display:none;" pattern="^[^\s]+$"
+                            placeholder="eg: gift"><br><br>
+                    </div>
+
+                    <label for="date">Date</label>
+                    <input type="text" id="date" name="date" required placeholder="YYYY-MM-DD"
+                        pattern="(0{0,3}[1-9]|0{0,2}[1-9]\d|0?[1-9]\d{2}|1\d{3}|20[0-1]\d|202[0-5])-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|30)"
+                        title="Enter a date between 0001-01-01 and 2025-12-30"><br><br>
+
+                    <label for="createdAt">Created At</label>
+                    <input type="date" id="createdAt" name="createdAt" readonly><br><br>
+
+                    <label for="updatedAt">Updated At</label>
+                    <input type="datetime-local" id="updatedAt" name="updatedAt" readonly><br><br>
+
+                    <input type="submit" value="Add Transaction">
+                </form>
+            </div>
+        </section>
+
+        <section id="records">
+            <div class="aboutcontent">
+                <div class="records-controls">
+                    <div class="search-container">
+                        <label for="searchInput">Search:</label>
+                        <input type="text" id="searchInput" placeholder="search...">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="caseInsensitive" checked>
+                            Case Insensitive
+                        </label>
+                        <span id="searchError" class="search-error"></span>
+                    </div>
+
+                    <div class="sort-container">
+                        <label>Sort by:</label>
+                        <button class="sort-btn" data-sort="date">Date &uarr; &darr;</button>
+                        <button class="sort-btn" data-sort="description">Description &uarr; &darr;</button>
+                        <button class="sort-btn" data-sort="amount">Amount &uarr; &darr;</button>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table id="recordsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Created At</th>
+                                <th>Updated At</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="settings">
+
+            <div class="settingInputs">
+                <h3>Set Your Financial Goals</h3>
+                <div>
+                    <label>Total Income (RWF):</label>
+                    <input type="number" id="income" placeholder="eg: 1150000" step="1" min="0">
+                </div>
+
+                <div>
+                    <label>Maximum Spending (RWF):</label>
+                    <input type="number" id="maxSpending" placeholder="eg: 1000000" step="1" min="0">
+                </div>
+
+                <div>
+                    <label>Amount to Save (RWF):</label>
+                    <input type="number" id="savings" placeholder="eg: 150000" step="1" min="0">
+                </div>
+
+                <div>
+                    <label>Choose Currency (optional):</label>
+                    <select id="currency">
+                        <option value="">None</option>
+                        <option value="USD" selected>USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="Naira">Naira</option>
+                    </select>
+                </div>
+
+                <h3>Manual Exchange Rates</h3>
+                <div>
+                    <label>1 RWF = USD</label>
+                    <input type="number" id="rateUSD" placeholder="eg: 0.02" step="0.01" min="0">
+                </div>
+
+                <div>
+                    <label>1 RWF = EUR</label>
+                    <input type="number" id="rateEUR" placeholder="eg: 0.03" step="0.01" min="0">
+                </div>
+
+                <div>
+                    <label>1 RWF = Naira</label>
+                    <input type="number" id="rateNaira" placeholder="eg: 0.002" step="0.01" min="0">
+                </div>
+
+                <button id="saveBtn">Save Settings</button>
+                <button id="editBtn">Edit Settings</button>
+            </div>
+
+
+            <div class="settingSummary">
+                <h3>Cash Summary</h3>
+                <p><strong>Total Income:</strong> <span id="showIncome">0</span></p>
+                <p><strong>Max Spending:</strong> <span id="showSpending">0</span></p>
+                <p><strong>Savings:</strong> <span id="showSavings">0</span></p>
+                <p id="converted"></p>
+                <p id="errorMsg"></p>
+            </div>
+
+            <div id="changeLightMode">
+                <h3>Change Light/Dark Mode</h3>
+                <p>Please choose your preferred display mode.<br>
+                    You can select either Light Mode or Dark Mode for the best viewing experience.</p>
+                <button id="modeButton">Change Mode</button>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ALU Student Finance Tracker. All rights reserved.</p>
+        <div id="contactFooter">
+            <p>Contact Me:
+                <a href="mailto:uboneshakevine5@gmail.com" aria-label="Send me an email">Email Me</a> |
+                <a href="https://github.com/Bonesha-5/alu-student_finance_tracker-app" target="_blank"
+                    alt="github">GitHub
+                    Repo</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
