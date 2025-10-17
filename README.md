@@ -11,14 +11,11 @@ The project is organized as follows:
 │
 ├── test.html                  # Main HTML file (entry point)
 │
-├── /js
-│   └── main.js                # Core JavaScript logic and functionality
+├── main.js                # Core JavaScript logic and functionality
 │
-├── /style
-│   └── style.css              # All styles used throughout the application
+├── style.css              # All styles used throughout the application
 │
-├── /assets              
-│   └── [images]              # Additional images used in the UI
+├── [images]              # Additional images used in the UI
 
 **🚀 How to Launch**
 
@@ -146,3 +143,4 @@ Demo video below
 https://www.loom.com/share/b02b56fdc0b64c219a834c07dee78a91?sid=3ee2959d-9d07-4e0f-bc30-e0babbf3cae0
 
 Live Page: https://bonesha-5.github.io/alu-student_finance_tracker-app/
+Github link: https://github.com/Bonesha-5/alu-student_finance_tracker-app.git
